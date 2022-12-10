@@ -1,0 +1,59 @@
+html, body {
+  overscroll-behavior-y: contain;
+  -webkit-user-select: none;
+  font-family: Vernada;
+  font-size: 150%;
+  background-image: linear-gradient(#ffaf00,#ffbc29);
+}
+
+.card {
+  position: absolute;
+  height: 80%;
+  top: calc(3% - 10px);
+  width: 80%;
+  left: calc(10% - 10px);
+}
+
+.def_text {
+  position: relative;
+  top: 40%;
+  margin-top: 10%;
+  left: 2%;
+}
+
+.fetch_pokemon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 87%;
+  height: 10%;
+  left: 40%;
+  width: 20%;
+  background:
+  linear-gradient(#ff7373,#ff2b2b);
+  border-radius: 100%;
+  border: 3px solid #c21818;
+}
+
+.fetch_pokemon:active {
+  background:
+  linear-gradient(#ff2b2b,#ff7373);
+}
+
+#ability {
+  position: absolute;
+  word-wrap: break-word;
+  width: 82.5%;
+  left: 15.5%;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 69%;
+  }
+
+  #ability {
+    width: 79.5%;
+    left: 18.5%;
+  }
