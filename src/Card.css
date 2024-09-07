@@ -1,0 +1,13 @@
+.main_container {
+    position: absolute;
+    background-color: bisque;
+    width: 50%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pokemon_name {
+    color:rgb(5, 64, 44);
+}
