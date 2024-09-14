@@ -5,9 +5,45 @@
     height: 90%;
     top: 50%;
     left: 50%;
+    display: flex;
+    flex-direction: column;
     transform: translate(-50%, -50%);
 }
 
 .pokemon_name {
-    color:rgb(5, 64, 44);
+    position: relative;
+    margin-top: 0;
+    top: 0;
+    background-color: rgb(5, 64, 44);
+}
+
+.content-container {
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+}
+
+.main_img {
+    position: relative;
+    background-color: rgb(5, 64, 44);
+    height: 100%;
+    width: 50%;
+}
+
+.main_img > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.buttons_container {
+    background-color: blueviolet;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons_container > button {
+    margin: 10px;
 }
