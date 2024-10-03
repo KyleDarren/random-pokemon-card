@@ -12,9 +12,15 @@ function Card() {
     const [face_direction, setFaceDirection] = useState("front");
     const [gender, setGender] = useState("male");
     const [appearance, setApperance] = useState("normal");
+    const [type, setType] = useState("Normal");
 
-    // This function is use for loading the pokemon image
-    const loadPokemonImage = async (data, random_num) => {
+    // Function that capitalized the pokemon name
+    const upperCapital = (name) => {
+        return name.charAt(0).toUpperCase() + name.substring(1);
+    }
+
+    // This function is use for loading the pokemon image and pokemon data that is located in another link
+    const  loadPokemonImageAndData = async (data, random_num) => {
         try {
 
             // Wait until the fetching of data is finished
@@ -30,7 +36,17 @@ function Card() {
             // Put the data to a variable so that it can be accessed by other function for modifying images
             setPokemonData(data2)
             setPokemonImage(data2.sprites.front_default);
-            
+
+            // Make sure that all types are being printed out
+            if (data2.types.length > 1) {
+                let type_arr = "";
+                for (const i of data2.types) {
+                    type_arr += `${upperCapital(i.type.name)}, `;
+                }
+                setType(type_arr.substring(0,type_arr.length-2));
+            } else {
+                setType(upperCapital(data2.types[0].type.name));
+            }
 
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
@@ -55,10 +71,10 @@ function Card() {
             const data = await response.json();
 
             // Set the name of the chosen Pokemon
-            setPokemonName(data.results[random_num].name);
+            setPokemonName(upperCapital(data.results[random_num].name));
 
             // Load the pokemon image
-            loadPokemonImage(data, random_num);
+             loadPokemonImageAndData(data, random_num);
 
             // Set attributes to default
             setFaceDirection("front");
@@ -246,9 +262,10 @@ function Card() {
             <div className="content-container">
                 <div className="main_img"><img src={pokemon_image} /></div> {/* "https://placehold.co/400" */}
                 <div className="text-content">
+                    <p>Gender: {gender}</p>
+                    <p>Types: {type}</p>
                     <p>Face Direction: {face_direction}</p>
                     <p>Appearance: {appearance}</p>
-                    <p>Gender: {gender}</p>
                 </div>
             </div>
             
